@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types'
 import Button from './Button';
 
-function Header({ title }) {
-  const handleClick = (e) => {
-    console.log('click', e)
-  }
-
+function Header({ title, addTaskSeen, toggleAddTask }) {
   return (
     <header className='header'>
       {/* <h1 style={{ color: 'red', backgroundColor: 'black' }}>{title}</h1> */}
       {/* <h1 style={headingStyle}>{title}</h1> */}
 
       <h1>{title}</h1>
-      <Button color="green" text="Add" handleClick={handleClick} />
+      <Button
+        color={addTaskSeen ? 'red' : 'green'}
+        text={addTaskSeen ? 'Close' : 'Add'}
+        toggleAddTask={toggleAddTask}
+      />
     </header>
   )
 }

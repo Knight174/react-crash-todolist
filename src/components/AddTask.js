@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddTask = ({ onAdd }) => {
+const AddTask = ({ onAdd, addTaskSeen }) => {
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
   const [reminder, setReminder] = useState(false);
@@ -20,7 +20,7 @@ const AddTask = ({ onAdd }) => {
   }
 
   return (
-    <form className="add-form" onSubmit={onSubmit}>
+    <form className='add-form' onSubmit={onSubmit}>
       <div className="form-control">
         <label htmlFor="">Task</label>
         <input
