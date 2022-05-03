@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from 'react-router-dom'; // 路由相关
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
+import About from './components/About'
+// import Home from './components/Home'
 
 function App() {
   const [addTaskSeen, setAddTaskSeen] = useState(false)
@@ -80,11 +84,6 @@ function App() {
     )
   }
 
-  // toggle add task block
-  // const toggleAddTask = () => {
-  //   setAddTaskSeen(!addTaskSeen);
-  // }
-
   return (
     <div className="container">
       {/* heading */}
@@ -92,16 +91,28 @@ function App() {
         addTaskSeen={addTaskSeen}
         toggleAddTask={() => setAddTaskSeen(!addTaskSeen)}
       />
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <>
+              {/* control visible of AddTask Block with value of addTaskSeen */}
+              {addTaskSeen && <AddTask onAdd={addTask} />}
 
-      {/* control visible of AddTask Block with value of addTaskSeen */}
-      {addTaskSeen && <AddTask onAdd={addTask} />}
-
-      {/* task list render */}
-      {
-        tasks.length > 0 ?
-          (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) :
-          ('No tasks to show here.')
-      }
+              {/* task list render */}
+              {
+                tasks.length > 0 ?
+                  (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) :
+                  ('No tasks to show here.')
+              }
+            </>
+          }
+        />
+        {/* <Route exact path='/' element={<Home />} /> */}
+        <Route exact path='/about' element={<About />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
