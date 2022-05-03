@@ -11,9 +11,16 @@
   padding: 20px;
   border: 1px solid #000;
   border-radius: 4px;
+  transition: 200ms;
 }
 
-.header {
+.container:hover {
+  box-shadow: 3px 3px 3px #123;
+}
+
+/* Header start */
+
+.container .header {
   display: flex;
   justify-content: space-between;
   height: 40px;
@@ -25,4 +32,20 @@
   border: 0;
   background-color: red;
   cursor: pointer;
+}
+
+/* Header end */
+
+/* Tasks start */
+.task {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #aca9a76e;
+}
+
+.task h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
