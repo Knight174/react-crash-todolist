@@ -11,13 +11,15 @@ function App() {
   const [addTaskSeen, setAddTaskSeen] = useState(false)
   const [tasks, setTasks] = useState([]);
 
+  // https://reactjs.org/docs/hooks-effect.html#detailed-explanation
+  // Similar to componentDidMount and componentDidUpdate, but not equal to them!
   useEffect(() => {
     const getTasks = async () => {
       const tasksFromServer = await fetchTasks()
       setTasks(tasksFromServer)
     }
     getTasks();
-  }, [])
+  }, []) // useEffect 第二个参数的解释：https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
 
   // fetch tasks
   const fetchTasks = async () => {
@@ -91,6 +93,7 @@ function App() {
         addTaskSeen={addTaskSeen}
         toggleAddTask={() => setAddTaskSeen(!addTaskSeen)}
       />
+      {/* https://reactrouter.com/docs/en/v6/getting-started/tutorial#add-some-routes */}
       <Routes>
         <Route
           path="/"
